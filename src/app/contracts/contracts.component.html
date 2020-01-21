@@ -1,56 +1,18 @@
-<!-- Rendering contracts list -->
 
 <div style="padding: 13px;">
-
-    <table mat-table [dataSource]="contracts">
-        
-        <!-- Customer Name Column -->
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Customer Name </th>
-            <td mat-cell *matCellDef="let contracts"> {{contracts.name}} </td>
-        </ng-container>
-
-        <!-- Customer Address Column -->
-        <ng-container matColumnDef="address">
-            <th mat-header-cell *matHeaderCellDef> Customer Address </th>
-            <td mat-cell *matCellDef="let contracts"> {{contracts.address}} </td>
-        </ng-container>
-
-        <!-- Total Price Column -->
-        <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef> Total Price </th>
-            <td mat-cell *matCellDef="let contracts"> {{contracts.price}} </td>
-        </ng-container>
-
-        <!-- Broker Agent Name Column -->
-        <ng-container matColumnDef="agent">
-            <th mat-header-cell *matHeaderCellDef> Broker Agent Name </th>
-            <td mat-cell *matCellDef="let contracts"> {{contracts.agent}} </td>
-        </ng-container>
-        
-        <!-- Broker Company Name Column -->
-        <ng-container matColumnDef="company">
-            <th mat-header-cell *matHeaderCellDef> Broker Company Name </th>
-            <td mat-cell *matCellDef="let contracts"> {{contracts.company}} </td>
-        </ng-container>
-
-        <!-- Contract Start Date Column -->
-        <ng-container matColumnDef="start">
-            <th mat-header-cell *matHeaderCellDef> Contract Start Date </th>
-            <td mat-cell *matCellDef="let contracts"> {{contracts.start}} </td>
-        </ng-container>
-
-        <!-- Contract End Date Column -->
-        <ng-container matColumnDef="end">
-            <th mat-header-cell *matHeaderCellDef> Contract End Date </th>
-            <td mat-cell *matCellDef="let contracts"> {{contracts.end}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let contracts; columns: columnsToDisplay"></tr>
-    </table>
     
+    <!-- Rendering contracts list -->
+    <mat-table #table [dataSource]="dataSource">
+        <ng-container matColumnDef="{{column.id}}" *ngFor="let column of columnNames">
+            <mat-header-cell *matHeaderCellDef> {{column.value}} </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element[column.id]}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
     <!-- Loading indicator -->
-    <mat-spinner class="loading-spinner" *ngIf="contracts.length === 0"></mat-spinner>
+    <!-- <mat-spinner class="loading-spinner" *ngIf="dataSource.length === 0"></mat-spinner> -->
 
 </div>

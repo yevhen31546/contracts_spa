@@ -19,7 +19,27 @@ describe('ContractsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
+
+  // Testing project loads contracts mock data
+  // it('should render title', () => {
+  //   const fixture = TestBed.createComponent(AppComponent);
+  //   fixture.detectChanges();
+  //   const compiled = fixture.debugElement.nativeElement;
+  //   expect(compiled.querySelector('.content span').textContent).toContain('contracts-spa app is running!');
+  // });
+
+  // Testing loading indicator is loaded before contracts
+  // it('should render title', () => {
+  //   const fixture = TestBed.createComponent(AppComponent);
+  //   fixture.detectChanges();
+  //   const compiled = fixture.debugElement.nativeElement;
+  //   expect(compiled.querySelector('.content span').textContent).toContain('contracts-spa app is running!');
+  // });
+
+  
+
+
 });
