@@ -48,11 +48,6 @@ export class ContractsComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      // this.ApiService.get().then((data: any[]) => { // Load contact data using service
-      //   this.displayedColumns = this.columnNames.map(x => x.id);
-      //   this.dataSource = data;
-      // });
-
       this.displayedColumns = this.columnNames.map(x => x.id);
       this.dataSource = this.ApiService.get();
     }, 3000);

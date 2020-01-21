@@ -43,14 +43,10 @@ describe('ContractsComponent', () => {
   it('Contract List', fakeAsync(() => {
     dataList = service.get();
     component.dataSource = dataList;
-    // console.log(dataList);
 
     // here you could add an expect to validate component state before the call or service completes
 
-    // component.ngOnInit(); // call ngOnInit
     tick(3000); // simulate the promise being resolved
-
-    console.log(component.dataSource);
 
     expect(component.dataSource.length).toBe(5);
     expect(component.dataSource).not.toBe([]);
