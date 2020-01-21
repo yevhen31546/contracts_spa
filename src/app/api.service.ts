@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { resolve } from 'url';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { resolve } from 'url';
 export class ApiService {
 
   //  Return a mock data with 3 seconds delay
-  public get() {
+  public get(): Observable<any[]> {
 
     // Here is mock contact data
     const contracts = [];
@@ -17,8 +18,15 @@ export class ApiService {
     contracts.push({ name: 'Napalm Man', address: 'War Zone', price: 43.333, agent: 'Scal Octo', company: 'Djwo', start: '2019-12-12', end: '2019-12-12' });
     contracts.push({ name: 'Adult Calvin', address: 'In the future', price: 54, agent: 'Scal Octo', company: 'Djwo', start: '2019-12-12', end: '2019-12-12' });
 
-    return new Promise(resolve =>
-      setTimeout(() => resolve(contracts), 3000) // 3s delay
-    );
+    // return new Promise(resolve =>
+    //   setTimeout(() => resolve(contracts), 3000) // 3s delay
+    // );
+    // return contracts;
+    return Observable.create(observer => {
+      observer.next(contracts);
+      setTimeout(() => {
+        observer.complete();
+      }, 3000);
+    });
   }
 }
