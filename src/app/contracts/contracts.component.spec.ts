@@ -41,38 +41,22 @@ describe('ContractsComponent', () => {
 
   // Loading mock data test
   it('Contract List', fakeAsync(() => {
-
-    // service.get().then((posts) => {
-    //   dataList = posts;
-    //   component.dataSource = dataList;
-    //   expect(component.dataSource.length).toBe(5);
-    //   expect(component.dataSource).not.toBe([]);
-    // });
     dataList = service.get();
     component.dataSource = dataList;
+    // console.log(dataList);
+
+    // here you could add an expect to validate component state before the call or service completes
+
+    // component.ngOnInit(); // call ngOnInit
+    tick(3000); // simulate the promise being resolved
+
     console.log(component.dataSource);
+
     expect(component.dataSource.length).toBe(5);
     expect(component.dataSource).not.toBe([]);
+    expect(service.get).toHaveBeenCalled;
+    fixture.detectChanges();
 
-    // expect(dataList).toBeTruthy();
-    // console.log(component.dataSource);
-
-    // dataList = service.get();
-
-    // console.log('before call');
-    // tick(3000);
-    // fixture.detectChanges();
-    // console.log('after call');
-
-    // // fixture.detectChanges();
-    // component.dataSource = dataList;
-    // expect(component.dataSource.length).toBe(5);
-
-    // // flushMicrotasks();
-
-    // // fixture.detectChanges();
-    // expect(component.dataSource).not.toBe([]);
-    // discardPeriodicTasks();
 
   }));
 
