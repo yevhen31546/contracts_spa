@@ -47,10 +47,15 @@ export class ContractsComponent implements OnInit {
   }];
 
   ngOnInit() {
-    this.ApiService.get().subscribe((data: any[]) => { // Load contact data using service
+    setTimeout(() => {
+      // this.ApiService.get().then((data: any[]) => { // Load contact data using service
+      //   this.displayedColumns = this.columnNames.map(x => x.id);
+      //   this.dataSource = data;
+      // });
+
       this.displayedColumns = this.columnNames.map(x => x.id);
-      this.dataSource = data;
-    });
+      this.dataSource = this.ApiService.get();
+    }, 3000);
   }
 
 }
