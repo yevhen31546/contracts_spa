@@ -1,45 +1,67 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContractsComponent } from './contracts.component';
+import { MatToolbarModule, MatButtonModule, MatTableModule, MatProgressSpinnerModule } from '@angular/material';
+import { By } from '@angular/platform-browser';
 
 describe('ContractsComponent', () => {
   let component: ContractsComponent;
   let fixture: ComponentFixture<ContractsComponent>;
+  let element: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContractsComponent ]
+      imports: [
+        MatToolbarModule,
+        MatButtonModule,
+        MatTableModule,
+        MatProgressSpinnerModule
+      ],
+      declarations: [ContractsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ContractsComponent);
     component = fixture.componentInstance;
+    element = fixture.nativeElement;
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  // Call ngOnInit function
+  it('Contract ngOnInit', () => {
+    // const fixture = TestBed.createComponent(ContractsComponent);
+    // component = fixture.componentInstance;
+    // fixture.detectChanges();
+    component.ngOnInit();
+    expect(component.dataSource).not.toBe([]);
+    // expect(component.dataSource).();
+
+  });
 
   // Testing project loads contracts mock data
-  // it('should render title', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.debugElement.nativeElement;
-  //   expect(compiled.querySelector('.content span').textContent).toContain('contracts-spa app is running!');
-  // });
+  it('Contract List', () => {
+    // const fixture = TestBed.createComponent(ContractsComponent);
+    // component = fixture.componentInstance;
+    // fixture.detectChanges();
+    expect(component.dataSource).not.toBe([]);
+    // expect(component.dataSource).();
+
+  });
 
   // Testing loading indicator is loaded before contracts
-  // it('should render title', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.debugElement.nativeElement;
-  //   expect(compiled.querySelector('.content span').textContent).toContain('contracts-spa app is running!');
-  // });
+  it('Loading Test', () => {
+    const query = fixture.debugElement.query(By.css('.loading-spinner')).nativeElement;
+    // expect(fixture.debugElement.nativeElement).toContain(query);
+    expect(query).toBeTruthy();
+  });
 
-  
+
 
 
 });

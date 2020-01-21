@@ -11,7 +11,7 @@ export class ContractsComponent implements OnInit {
 
   constructor(private ApiService: ApiService) { }
 
-  dataSource = [];
+  public dataSource = [];
   displayedColumns = [];
 
   /**

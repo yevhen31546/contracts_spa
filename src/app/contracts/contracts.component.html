@@ -1,6 +1,4 @@
-
-<div style="padding: 13px;">
-    
+<div style="padding: 13px;" class="contact-container">
     <!-- Rendering contracts list -->
     <mat-table #table [dataSource]="dataSource">
         <ng-container matColumnDef="{{column.id}}" *ngFor="let column of columnNames">
@@ -13,6 +11,6 @@
     </mat-table>
 
     <!-- Loading indicator -->
-    <!-- <mat-spinner class="loading-spinner" *ngIf="dataSource.length === 0"></mat-spinner> -->
+    <mat-spinner class="loading-spinner" *ngIf="dataSource.length === 0"></mat-spinner>
 
 </div>
